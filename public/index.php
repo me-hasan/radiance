@@ -17,9 +17,10 @@ use App\Http\Controllers\About;
 $router = new Route();
 
 $router
-    ->register('/home', [Home::class, 'index'])
-    ->register('/about', [About::class, 'index'])
+    ->get('/home', [Home::class, 'index'])
+    ->get('/about', [About::class, 'index'])
+    ->get('/about/create', [About::class, 'store'])
 ;
 
 
-echo $router->resolve($_SERVER['REQUEST_URI']);
+echo $router->resolve($_SERVER['REQUEST_URI'], mb_strtolower($_SERVER['REQUEST_METHOD']));

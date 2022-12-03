@@ -11,4 +11,9 @@ class About{
     {
         return 'About';
     }
+
+    public function store()
+    {
+        var_dump($_POST);
+    }
 }
