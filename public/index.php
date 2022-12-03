@@ -9,14 +9,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 
 use App\Providers\Route;
-use App\Http\Home;
-use App\Http\About;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\About;
 
 
 
 $router = new Route();
+
 $router
-    ->register('/', [Home::class, 'index'])
+    ->register('/home', [Home::class, 'index'])
     ->register('/about', [About::class, 'index'])
 ;
 

@@ -2,7 +2,7 @@
 
 
 
-namespace App\Http;
+namespace App\Http\Controllers;
 
 
 class About{
