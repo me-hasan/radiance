@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: app_server
+    restart: always
+    working_dir: /var/www/  
+    volumes: 
+      - ../src/radiance:/var/www
+    networks:
+      - internal
+    links:
+      - mariadb:db 
+
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: nginx_server
+    restart: always
+    ports:
+      - "9006:80"
+    volumes: 
+      - ../src/radiance:/var/www      
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - internal
+
+  mariadb:
+    image: mysql:8.0
+    container_name: db_server
+    volumes: 
+      - ./storage/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"  
+    networks:
+      - internal  
+
+  adminer:
+    image: adminer
+    container_name: data_client_server
+    restart: always
+    ports:
+      - 8082:8080
+    networks:
+      - internal   
+    links:
+      - mariadb:db    
+
+
+networks:
+  internal:
+    driver: bridge    
