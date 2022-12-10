@@ -2,3 +2,4 @@
 /docker/storage/*
 /src/radiance/vendor/*
 /src/radiance/.env
+/src/radiance/composer.lock
