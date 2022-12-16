@@ -9,5 +9,8 @@
     },
     "require": {
         "vlucas/phpdotenv": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }

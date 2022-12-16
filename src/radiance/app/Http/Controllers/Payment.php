@@ -5,8 +5,9 @@
 namespace App\Http\Controllers;
 
 use App\Providers\View;
+use App\bootstrap\App;
 use PDO;
-
+use App\model\User;
 
 class Payment{
 
@@ -17,15 +18,11 @@ class Payment{
 
     public function create()
     {
-        // var_dump($_ENV['DB_HOST']);
-        // phpinfo();
-        $db = new PDO(
-            'mysql:host='.$_ENV['DB_HOST'].
-            ';port='.$_ENV['DB_PORT'].
-            ';dbname='.$_ENV['DB_DATABASE'].'', $_ENV['DB_USER'], $_ENV['DB_PASS'], []);
+        $user = new User();
 
-        var_dump($db);
-       
+        $user->all();
+        
+         
         return View::make('payment/create');
     }
 

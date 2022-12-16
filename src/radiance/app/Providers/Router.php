@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Exceptions\RouteNotFoundException;
 
-class Route 
+class Router 
 {
 
     private array $routes;
